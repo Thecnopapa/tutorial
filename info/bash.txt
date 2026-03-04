@@ -1,0 +1,191 @@
+### BASH Tutorial ######################################################################################################
+
+@ Iain Visa (iainvisa.com)
+
+
+
+### Intro ##############################################################################################################
+
+
+Bash allows to run terminal commands from a file.
+
+It can be used to make bash scripts.
+
+Bash scripts are basically linux terminal commands (if you use a bash shell) in a file and executed after each other.
+
+Bash scripts can have any file extension (or none) and can be executes as programs (see ./linux.txt).
+
+There are common bash scripts on Linux such as .bashrc that can prove usefull if understood.
+
+For further details into bash I recommend the content of @yousuckatprogramming who teaches bash in short- and long-form
+ viedos. or visit https://www.gnu.org/software/bash/manual/bash.html .
+
+
+
+### Basics #############################################################################################################
+
+
+# Before using bash #
+
+Even if it is (the most?) common to use bash with linux, that might not necessarily be the case.
+If you dont see a "$" sign in your terminal try typing bash to activate a bash shell in your terminal.
+(If that doesn't work you might have to install bash)
+
+Once in a bash shell, bash scripts should behave as expected. (I don't wkow what happens otherwise)
+
+
+# Bash syntax #
+
+The most basic level of bash syntax is just a series of commands as if typed in the terminal one after the other.
+For example:
+
+>>>
+#!/bin/bash
+echo "Hello World"
+ls .
+cd
+<<<
+
+This example prints "Hello "World", prints a list of files in your current directory, and changes directory to your 
+home folder.
+
+Each command is executed to completion regardless of the success of previous commands, unlike other languages where it
+ would stop on error. Therefore extra considerations bust be taken to avoid unexpected behaviours.
+
+The first line ("#!/bin/bash") indicates the which program should run this script if unspecified. 
+(not sure if necessary)
+
+The comment symbol in bash is "#".
+
+!! In bash "" and '' do not behave the same way.
+
+Indentation is not important in bash, and there are no required line endings.
+
+Similar to other languages bash has variables, functions, conditionals, and loops.
+
+
+
+### Variables ##########################################################################################################
+
+Variables in bash are defined as following:
+
+>>> 
+VARNAME="your value"
+<<<
+
+or
+
+>>>
+export VARNAME="your value"
+<<<
+
+Without entering into much detail:
+ - !! important thah there is no space on either sido of the "=".
+ - variables are global and will can override variables in the environment
+ - variables can be called by adding a "$" in front (on a script or a terminal): 
+	 >>>
+	 echo $VARNAME
+	 <<<
+ - add "export" in front of your definition to make the variable visible to other scripts or processes.
+ - I recommend checking if the variable exists, especially if using other software keywords such as GIT or CONDA.
+ - By convention (I think) bash variables are capital, probably to avoid confusion with other commands.
+
+Variables can be inserted into strings, but only if "" are used.
+If inserting a variable into a string it is recommended to use curly braces around the variable name:
+
+>>>
+echo "My name is ${MY_NAME}"
+<<<
+
+Alternatively to vaariables aliases can be defined, with the main difference that they are referenced without the "$" 
+ but can be used in less situations
+
+
+The variables $1, $2, ... , $* are set to the arguments given when executing a script or function. 
+
+
+### Conditionals #######################################################################################################
+
+Bash has a simple if/else syntax that looks like this:
+
+>>>
+if [[ condition ]]; then
+	...
+else
+	...
+fi
+<<<
+
+Else-if is also available if necessary.
+!! Nothing shoud touch the square brackets on either side (or inside) or the operators.
+
+All the possible conditions are too compex to cover here but here you have some examples:
+
+[[ "$VAR1" == "expected value" ]] or [[ "$VAR1" == "$VAR2" ]] # To check if a variable (or string) is equal to aanother
+[[ "$VAR1" == *"partial match"* ]] or [[ "$VAR1" == *"$VAR2"* ]] # Same but checking if one is iside the other
+
+
+[[ -d "/path/to/folder" ]] or [[ -d "$MY_FOLDER" ]] # to check if a folder exists.
+[[ -f "/path/to/file" ]] or [[ -f "$MY_FILE" ]] # to check if a file exists.
+
+[[ $* == "expected argument" ]] or [[ $* == *"expected argument fragment"* ]] # Checks if any of the given arguments 
+ (when executing or sourcing the script) matches the target (or any argument contains the target).
+
+
+
+### Functions ##########################################################################################################
+
+
+
+
+
+
+### Bash Scripts #######################################################################################################
+
+If written to a file called bash_script, the command ./bash_script in your terminal will execute the contents inside.
+
+Executing a bash script will run the content in a new shell, meaning that new variables or functions defined will not
+ be available to the current shell.
+
+When sourcing ("source ./bash_script") a script, it will be executed in the current shell so variables and functions 
+can be used afterwards.
+
+Never execute or source a script from within itself. (I tried that)
+
+A common use of bash scripts is to save and execute frequently-used functions and variables for example:
+
+>>>
+
+echo "Setting up project environment"
+conda activate my_env_name || echo "Conda environment not found" & return 1
+alias my_program="/long/path/to/program"
+DATA_FOLDER="/path/to/my/data"
+
+do_all (){
+	python my_script1.py
+	python my_data_processing.py
+	open $DATA_FOLDER
+}
+
+<<<
+
+This example should be sourced as it only sets up some variables nad configuartions that otherwise would be lost on
+ script completion. It also stops the script if the conda environment is not activated correctly.
+
+This repo contains a bashrc.project file that I use in all my projects for quick setup of any github project. 
+(works out-of the-box)
+
+
+
+### .bashrc ############################################################################################################
+
+.bashrc usually found in your $HOME/ (aka ~/) directory is a bash script that SOURCES automatically when starting a 
+ new bash shell, meaning that all functions and variables defined in it will be available in your terminal and other
+ bash scripts.
+
+If modified a new shell must be started for the changes to take effect by executing "bash" and start a new shell, or
+ "exec bash" to replace the current one.
+
+
+
+########################################################################################################################
