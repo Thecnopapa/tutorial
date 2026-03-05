@@ -34,7 +34,7 @@ If you dont see a "$" sign in your terminal try typing bash to activate a bash s
 Once in a bash shell, bash scripts should behave as expected. (I don't wkow what happens otherwise)
 
 
-# Bash syntax #
+### Bash syntax ########################################################################################################
 
 The most basic level of bash syntax is just a series of commands as if typed in the terminal one after the other.
 For example:
@@ -104,6 +104,7 @@ Alternatively to vaariables aliases can be defined, with the main difference tha
 The variables $1, $2, ... , $* are set to the arguments given when executing a script or function. 
 
 
+
 ### Conditionals #######################################################################################################
 
 Bash has a simple if/else syntax that looks like this:
@@ -135,8 +136,24 @@ All the possible conditions are too compex to cover here but here you have some 
 
 ### Functions ##########################################################################################################
 
+Functions in bash are mini-programs that execute when called from terminal.
+Like other programs they can take arguments and return values.
 
+Their syntax is the following:
 
+>>>
+fun_name (){
+	...
+}
+<<<
+
+The only important detail is the space between the function name and the brackets.
+
+Any instructions can go inside the brackets, and arguments passed can be accessed with the $1, $2, ... , $* syntax.
+
+Variables defined and modified by the function are global unless "local" is added upfront.
+
+Function names are lowercase like regular programs.
 
 
 
@@ -172,8 +189,8 @@ do_all (){
 This example should be sourced as it only sets up some variables nad configuartions that otherwise would be lost on
  script completion. It also stops the script if the conda environment is not activated correctly.
 
-This repo contains a bashrc.project file that I use in all my projects for quick setup of any github project. 
-(works out-of the-box)
+This repo contains a bashrc.project file that I use in all my projects for quick setup of any github projects. 
+(instructions inside, works out-of the-box)
 
 
 
@@ -185,6 +202,12 @@ This repo contains a bashrc.project file that I use in all my projects for quick
 
 If modified a new shell must be started for the changes to take effect by executing "bash" and start a new shell, or
  "exec bash" to replace the current one.
+
+Programs that install into your shell often write in your .bashrc to set up configurations in all your shells, such as
+ conda activating the base envionment.
+
+If you don't want to modify the .bashrc directly you can create separate files (eg. one with aliases, one with
+ functions, ...) and then source them on the .bashrc.
 
 
 
