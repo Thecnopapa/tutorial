@@ -89,8 +89,19 @@ Or if you need a specific version:
 
 >>> conda install python=3.XX
 
+Now that your environment has python, when executing the "python" command in the terminal, this is the one being used.
 
+While most packages can be installed with conda, often pip is used instead, as it has a more comprehensive repository
+ of packages (and is also faster).
 
+For that it must me installed in the environment:
+
+>>> conda install pip
+
+Now you can install packages with either of the following commands:
+
+>>> conda install package_name
+>>> pip install package_name
 
 ### Syntax #############################################################################################################
 
