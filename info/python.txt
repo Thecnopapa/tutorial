@@ -56,7 +56,7 @@ Conda can be installed from their website: https://www.anaconda.com/download
 
 Once you have installed conda you can activate conda environments with the following command:
 
->>> conda activate env_name
+$ conda activate env_name
 
 The default environment is the "base" or "miniconda3" environments, and you should avoid using it for your projects.
 
@@ -70,12 +70,12 @@ This means that you can have different environments with different python and pa
 
 You can view the list of available environments by running the command:
 
->>> conda list env
+$ conda list env
 
 When starting a python project you should create it's corresponding environment to install packages without conflicting
  with those used in other projects. You can use the following command for that:
 
->>> conda create -n env_name
+$ conda create -n env_name
 
 !! If using an existing env_name it will erase it and reset it (might be usefull if intended)
 
@@ -87,7 +87,7 @@ Once created a new environment (and activating it), you can start by installing 
 
 Or if you need a specific version:
 
->>> conda install python=3.XX
+$ conda install python=3.XX
 
 Now that your environment has python, when executing the "python" command in the terminal, this is the one being used.
 
@@ -96,12 +96,45 @@ While most packages can be installed with conda, often pip is used instead, as i
 
 For that it must me installed in the environment:
 
->>> conda install pip
+$ conda install pip
 
 Now you can install packages with either of the following commands:
 
->>> conda install package_name
->>> pip install package_name
+$ conda install package_name
+$ pip install package_name
+
+To check which packages are installed you can use:
+
+$ conda list
+
+And to deactivate the environment:
+
+$ conda deactivate
+
+
+### Python Scripts #####################################################################################################
+
+
+Python is proggramed into scripts which then are executed by python.
+
+Python scripts end with ".py" (although not technically necessary).
+
+To execute a python script you may run the following command in your terminal:
+
+$ python my_script.py
+
+You can add arguments to the script by typing them next to the script name, which will be accessible in the script:
+
+$ python my_script.py argument1 argument2 ...
+
+When running a script your terminal will stay locked (you cannot run other commands) until the script ends (or breaks).
+
+While running you will see everything that the script prints onthe terminal, and if the script breaks you will also see
+ the error traceback.
+
+You can interrupt the running script by pressing CTRL + C any time (this will show up an error but should be harmless).
+
+
 
 ### Syntax #############################################################################################################
 
