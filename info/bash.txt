@@ -22,16 +22,14 @@ For further details into bash I recommend the content of @yousuckatprogramming w
 
 
 
-### Basics #############################################################################################################
-
-
-# Before using bash #
+### Before using bash ##################################################################################################
 
 Even if it is (the most?) common to use bash with linux, that might not necessarily be the case.
 If you dont see a "$" sign in your terminal try typing bash to activate a bash shell in your terminal.
 (If that doesn't work you might have to install bash)
 
 Once in a bash shell, bash scripts should behave as expected. (I don't wkow what happens otherwise)
+
 
 
 ### Bash syntax ########################################################################################################
@@ -147,7 +145,7 @@ fun_name (){
 }
 <<<
 
-The only important detail is the space between the function name and the brackets.
+The only important detail is the space between the function name and the parenthesis and to put nothing in them.
 
 Any instructions can go inside the brackets, and arguments passed can be accessed with the $1, $2, ... , $* syntax.
 
@@ -169,7 +167,7 @@ can be used afterwards.
 
 Never execute or source a script from within itself. (I tried that)
 
-A common use of bash scripts is to save and execute frequently-used functions and variables for example:
+A simple use of bash scripts is to save and execute frequently-used functions and variables for example:
 
 >>>
 

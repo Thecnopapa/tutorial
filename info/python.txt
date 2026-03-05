@@ -5,3 +5,95 @@
 
 
 ### Intro ##############################################################################################################
+
+Python is one of the most used and friendly proggramming languages, perfect for data science and machine learning.
+
+But it is ideal for any purpose you might think of unless you go into proper computer science stuff or care about
+ millisecond optimisations.
+
+Unlike other programming languages it doesn´t need to be compiled, which basically makes it friendlier to normal people
+ who dón´t have a CS background.
+
+While anything could be programmed in basic Python, it has a large number of libraries (aka packages) for pretty much
+ anything you can think of. So that you do not need to re-invent the wheel every time.
+
+Here you will see only basic Python but I might add tutorials for some common libraries.
+
+!! Anything you see relating to python 2 is not good to you as it will probably break your code. (Even if the same
+ language as python 3, the syntax is different and not compatibe).
+
+When this was witten python 3.14 is the latest stable version anything said here should apply to at least versions
+ above 3.10 (recommended > 3.12).
+
+
+
+### Before using Python ################################################################################################
+
+
+Python can (and is probably alreaady) be installed in your machine. this means that typing python or python3 in your
+ terminal will start a Python program which you can write on the go (CTRL + D to exit).
+
+But this Python is not ideal for proggramming as it is not running in a Python envionment.
+
+Therefore you should check the folllowing section if you haven't set up an envitonment yet.
+
+
+
+### Python Environments ################################################################################################
+
+Python relies on a library (aka package) system for its proper funtionality and extended application.
+
+For that purpose there are package managers that help you organise and install these packages.
+
+In practical terms, python is often listed as a package, and installed as such.
+
+There are various managers, but here I only show Conda (the only one I ever used).
+
+Conda can be installed from their website: https://www.anaconda.com/download
+(miniconda is essentially a lighter conda in terms of installation, same as conda otherwise and you won't tell
+ the difference after installation)
+(You might have to sell your soul during installation, press q to exit if stuck)
+
+Once you have installed conda you can activate conda environments with the following command:
+
+>>> conda activate env_name
+
+The default environment is the "base" or "miniconda3" environments, and you should avoid using it for your projects.
+
+If you agreed to it, the default environment will be activated in all your new shells by default.
+
+You can see the name of the current active environment next you your name in the terminal line.
+
+Each environment will have its own python and packages, and will not be shared with other environments.
+
+This means that you can have different environments with different python and package versions without conflict.
+
+You can view the list of available environments by running the command:
+
+>>> conda list env
+
+When starting a python project you should create it's corresponding environment to install packages without conflicting
+ with those used in other projects. You can use the following command for that:
+
+>>> conda create -n env_name
+
+!! If using an existing env_name it will erase it and reset it (might be usefull if intended)
+
+To delete environments just remove the respective folder, no extra action needed.
+
+Once created a new environment (and activating it), you can start by installing python in it with the following command:
+
+>>> conda install python
+
+Or if you need a specific version:
+
+>>> conda install python=3.XX
+
+
+
+
+### Syntax #############################################################################################################
+
+ 
+
+
